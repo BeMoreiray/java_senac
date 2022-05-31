@@ -3,30 +3,43 @@ package amigoCulto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class AmigoCulto {
 	 public static void main(String[] args) {
 		Random sorteio = new Random();
-		String valores;
+		int valores;
+		String rSorteio;
 		 List<String> nomes = new ArrayList<String>();
+		Scanner teclado = new Scanner(System.in);
+		
 			
-			nomes.add("Matheus");
-			nomes.add("Joao");
-			nomes.add("Beatriz");
-			nomes.add("Marcus");
-			nomes.add("Vinicius");
-			nomes.add("Lucas Renan");
-			nomes.add("Lucas");
-			nomes.add("Danilo");
-			nomes.add("Filipe");
-			nomes.add("Arian");
-			nomes.add("Ana");
-			nomes.add("Nicolas");
-			nomes.add("Henrrique");
-			
-			for(int i = 0; i < 1; i++ ) {
-				System.out.println("O nome sorteado é: " + nomes.get(sorteio.nextInt(nomes.size())));
+		 System.out.println("Quantas pessoas você deseja passear? ");
+		 	valores = teclado.nextInt();
+		 
+		 	for(int i = 0; i < valores; i++ ) {
+				System.out.println("Digite o nome: ");
 				
-			}
+				nomes.add(teclado.next());
+				
+			}	
+		 	
+		 	System.out.println("Você deseja sortear? s/n ");
+		 	rSorteio = teclado.next();
+		 	
+		 	if(rSorteio.equals("s")) {
+		 		System.out.println("O nome sorteado foi: " + nomes.get(sorteio.nextInt(nomes.size())));
+		 
+		 	}else if (rSorteio.equals("n")){
+		 		System.out.println("Termino do programa!");
+		 	}else {
+		 		System.out.println("Inválido");
+		 	}
+		 	
+		 
+		 teclado.close();
+		 
+	
+			
 	}
 }
