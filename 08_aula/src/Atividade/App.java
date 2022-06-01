@@ -13,7 +13,7 @@ public class App {
 		int idade;
 		int resposta;
 		Cliente cliente; 
-		Cliente classCliente;
+		
 
 		List<Cliente> banco = new ArrayList<Cliente>();
 
@@ -53,7 +53,10 @@ public class App {
 				
 			}else if(resposta == 2) {
 				for(Cliente c: banco) {
-					System.out.println(c);
+					String x = c.getNome();
+					System.out.println(banco.indexOf(x) + " " + c.getNome() + " " + c.getTelefone() + " " + c.getIdade());
+					
+					
 				}
 
 			}else if(resposta == 3) {
