@@ -8,6 +8,7 @@ import modelo.Carteira;
 public class Tela {
 	double saldo = 10.0;
 	int resposta;
+	String r02;
 	String nome, senha, cpf;
 	Carteira carteira = new Carteira();
 
@@ -26,9 +27,31 @@ public class Tela {
 		carteira.setNome(nome);
 		carteira.setSenha(senha);
 		carteira.setCpf(cpf);
-
 		carteira.setSaldo(saldo);
+		
+		 System.out.println("Você deseja realizar o login? (s/n)");
+		 r02 = teclado.next();
+		 if(r02.equals("s")) {
+			 
+		 }
+		
 		return carteira;
+	}
+	
+	public void logar(List<Carteira> banco) {
+		Scanner teclado = new Scanner(System.in);
+		for (Carteira c : banco) {
+			
+			System.out.println("Qual é o seu CPF?");
+			cpf = teclado.next();
+			
+			System.out.println("Digite sua senha:");
+			senha = teclado.next();
+			
+			if (c.getSenha().equals(senha)  && c.getCpf().equals(cpf)) {
+				//??????????????????
+			}
+		}
 	}
 
 	public void consultarSaldo(List<Carteira> banco) {
@@ -41,9 +64,9 @@ public class Tela {
 			System.out.println("Qual é o seu CPF?");
 			cpf = teclado.next();
 
-			if (c.getSenha() == senha && c.getCpf() == cpf) {
+			if (c.getSenha().equals(senha)  && c.getCpf().equals(cpf)) {
 				System.out.println(
-						banco.indexOf(c) + " -> Seus dados: Nome = " + c.getNome() + ", saldo = R$ " + c.getSaldo());
+						banco.indexOf(c) + " -> Nome = " + c.getNome() + ", \n saldo = R$ " + c.getSaldo());
 			}
 		}
 	}
@@ -61,14 +84,14 @@ public class Tela {
 			System.out.println("Qual é o seu CPF?");
 			cpf = teclado.next();
 
-			if (c.getSenha() == senha && c.getCpf() == cpf) {
+			if (c.getSenha().equals(senha) && c.getCpf().equals(cpf)) {
 				System.out.println(
-						banco.indexOf(c) + " -> Seus dados: Nome = " + c.getNome() + ", saldo = R$ " + c.getSaldo());
-				System.out.println("Qual valor você deseja adicionar a sua conta? ");
+						banco.indexOf(c) + " -> Nome = " + c.getNome() + " \n saldo = R$ " + c.getSaldo());
+				System.out.println("Valor do deposito: ");
 				saldo2 = teclado.nextDouble();
 
-				somaSaldo = saldo2 + c.getSaldo();
-				System.out.println("Seu saldo é: R$ " + somaSaldo);
+				somaSaldo = (saldo2 + c.getSaldo());
+				System.out.println("-> Saldo atual: R$ " + somaSaldo);
 
 				c.setSaldo(somaSaldo);
 
@@ -86,11 +109,12 @@ public class Tela {
 
 			System.out.println("Qual é o seu CPF?");
 			cpf = teclado.next();
-			if (c.getSenha() == senha && c.getCpf() == cpf) {
+			
+			if (c.getSenha().equals(senha) && c.getCpf().equals(cpf)) {
 
 				System.out.println(
-						banco.indexOf(c) + " -> Seus dados: Nome = " + c.getNome() + ", saldo = R$ " + c.getSaldo());
-				System.out.println("Quanto você deseja sacar?");
+						banco.indexOf(c) + " Nome = " + c.getNome() + ", \n saldo = R$ " + c.getSaldo());
+				System.out.println("Valor do saque: ");
 				valor = teclado.nextDouble();
 				if (valor > c.getSaldo()) {
 					System.out.println("Saldo insuficiente para saque!");
@@ -98,7 +122,7 @@ public class Tela {
 				} else {
 					double subSaldo;
 					subSaldo = (c.getSaldo() - valor);
-					System.out.println(subSaldo);
+					System.out.println("-> Saldo atual: R$ " + subSaldo);
 
 					c.setSaldo(subSaldo);
 
