@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.UsuarioDAO;
-import modelo.Usuario;
+import servico.UsuarioServico;
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/ExcluirUsuarioServlet")
+public class ExcluirUsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public LoginServlet() {
+
+    public ExcluirUsuarioServlet() {
         super();
     }
 
@@ -22,19 +22,14 @@ public class LoginServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String usuario = request.getParameter("usuario");
-		String senha = request.getParameter("senha");
-		Usuario u = null;
+		String id = request.getParameter("id");
 		
-		UsuarioDAO dao = new UsuarioDAO();
+		UsuarioServico servico = new UsuarioServico();
 		
-		u = dao.consultarUsuario(usuario, senha);
-		
-		if(u != null) {
+		if(servico.excluir(id)) {
 			response.sendRedirect("menu.jsp");
-		} else {
-			response.sendRedirect("erro.jsp");
 		}
 	}
 

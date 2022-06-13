@@ -5,6 +5,7 @@ public class Usuario {
 	private String nome;
 	private String usuario;
 	private String senha;
+	private String foto;
 	
 	public int getId() {
 		return id;
@@ -32,6 +33,13 @@ public class Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	
 	@Override

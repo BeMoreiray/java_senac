@@ -12,6 +12,32 @@ import modelo.Usuario;
 public class UsuarioDAO {
 	Connection cnx = null;
 	
+	public boolean excluirUsuario(int id) {
+		boolean resultado = true;
+		int retornoQuery;
+		
+		cnx = DAO.createConnection();
+		
+		String sql = "DELETE FROM tb_usuario WHERE id=?";
+		
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			
+			ps.setInt(1, id);
+			
+			retornoQuery = ps.executeUpdate();
+			
+			if(retornoQuery <= 0) {
+				resultado = false;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
+	}
+	
 	public Usuario consultarUsuario(String login, String senha) {
 		Usuario usuario = null;
 		ResultSet rs = null;
@@ -35,6 +61,7 @@ public class UsuarioDAO {
 				usuario.setNome(rs.getString("nome"));
 				usuario.setUsuario(rs.getString("usuario"));
 				usuario.setSenha(rs.getString("senha"));
+				usuario.setFoto(rs.getString("foto"));
 			}			
 			
 		} catch (SQLException e) {
@@ -65,6 +92,7 @@ public class UsuarioDAO {
 				usuario.setNome(rs.getString("nome"));
 				usuario.setUsuario(rs.getString("usuario"));
 				usuario.setSenha(rs.getString("senha"));
+				usuario.setFoto(rs.getString("foto"));
 				
 				listaDeUsuarios.add(usuario);
 			}
