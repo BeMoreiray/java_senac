@@ -51,7 +51,7 @@
 				<td><%=usuario.getId()%></td>
 				<td><%=usuario.getNome()%></td>
 				<td><%=usuario.getUsuario()%></td>
-				<td><a href="alterar.jsp?id="<%=usuario.getId()%>><img src="images/edit.png" width="24px" /></a></td>
+				<td><a href="PrepararAlteracaoUsuarioServlet?id=<%=usuario.getId()%>"><img src="images/edit.png" width="24px" /></a></td>
 				<td><a href="ExcluirUsuarioServlet?id=<%=usuario.getId()%>"><img
 						src="images/delete.png" width="24px" /></a></td>
 			</tr>
@@ -63,7 +63,7 @@
 			<nav>
 				<ul>
 					<li><a href="cadastrar.jsp">Incluir Usuário</a></li>
-					<li><a href="index.html">Logout</a></li>
+					<li><a href="LogoutServlet">Logout</a></li>
 				</ul>
 			</nav>
 		</div>

@@ -6,6 +6,9 @@ import modelo.Usuario;
 public class UsuarioServico {
 	UsuarioDAO usuario = new UsuarioDAO();
 	
+	public Usuario buscarPorId(int id) {
+		return usuario.buscarPorId(id);
+	}
 	public boolean alterar(Usuario usr) {
 		return usuario.alterarUsuario(usr);
 	}
